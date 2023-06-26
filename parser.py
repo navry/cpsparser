@@ -56,6 +56,7 @@ class Flight:
       self.plane_acronym = PLANE_ACRONYM.get(str(self.aircraft_registration))
       self.track_shape = self.get_track_shape()
       self.track_type = self.get_track_type()
+      self.locality = row.find_all("td")[2]
 
   def get_plane(self):
     try:
@@ -133,15 +134,18 @@ def load_flights(year):
     for row in full_table:
       flights.append(Flight(row))
 
+    flights.reverse()
+
     return flights
 
 def print_csv(flights):
     for flight in flights:
       if flight.cps_points:
         #      da co pi co pl  ar ac ts   leng       awsp tt   cp
-        print('{},CZ,{},{},{},,{},{},{},,,"{}",,,,,,,"{}",{},,,{},'.format(
+        print(',{},{},{},{},{},,{},{},{},,,"{}",,,,,,,"{}",{},,,{},'.format(
         #print('=HYPERLINK("{}","{}"),CZ,{},{},{},,{},{},{},,,{},,,,,,,{},{},,,{},'.format(flight.url,
                                                        flight.date,
+                                                       flight.locality,
                                                        flight.pilot,
                                                        flight.copilot,
                                                        flight.plane,
@@ -156,7 +160,7 @@ def print_csv(flights):
                                                       )
 
 def main():
-    year = "2022"
+    year = "2023"
     flights = load_flights(year)
     print_csv(flights)
 
