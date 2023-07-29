@@ -147,7 +147,7 @@ def print_csv(flights):
       if flight.cps_points:
         #      da co pi co pl  ar ac ts   leng       awsp tt   cp
         with open(timestr + '.txt', 'a') as f:
-            print(',{},{},{},{},{},,{},{},{},,,"{}",,,,,,,"{}",{},,,{},'.format(
+            print(';{};{};{};{};{};;{};{};{};;;"{}";;;;;;;"{}";{};;;{};'.format(
             #print('=HYPERLINK("{}","{}"),CZ,{},{},{},,{},{},{},,,{},,,,,,,{},{},,,{},'.format(flight.url,
                                                        flight.date,
                                                        flight.locality,
