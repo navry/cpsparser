@@ -18,6 +18,8 @@ TRACK_SHAPES = {
   "3OB": "L3",
   "4OB": "L4",
   "5OB": "L5",
+  "návratová": "N",
+  "FAI trojúhelník s odletem z ramene": "TF",
 }
 
 PLANE_ACRONYM = {
