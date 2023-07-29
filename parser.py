@@ -56,7 +56,7 @@ class Flight:
       self.plane_acronym = PLANE_ACRONYM.get(str(self.aircraft_registration))
       self.track_shape = self.get_track_shape()
       self.track_type = self.get_track_type()
-      self.locality = row.find_all("td")[2]
+      self.locality = row.find_all("td")[2].contents[0]
 
   def get_plane(self):
     try:
