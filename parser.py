@@ -1,6 +1,7 @@
 #!/usr/local/bin/python3
 
 import re
+import time
 import urllib3
 import datetime
 from bs4 import BeautifulSoup
@@ -139,11 +140,13 @@ def load_flights(year):
     return flights
 
 def print_csv(flights):
+    timestr = time.strftime("%Y%m%d-%H%M%S")
     for flight in flights:
       if flight.cps_points:
         #      da co pi co pl  ar ac ts   leng       awsp tt   cp
-        print(',{},{},{},{},{},,{},{},{},,,"{}",,,,,,,"{}",{},,,{},'.format(
-        #print('=HYPERLINK("{}","{}"),CZ,{},{},{},,{},{},{},,,{},,,,,,,{},{},,,{},'.format(flight.url,
+        with open(timestr + '.txt', 'a') as f:
+            print(',{},{},{},{},{},,{},{},{},,,"{}",,,,,,,"{}",{},,,{},'.format(
+            #print('=HYPERLINK("{}","{}"),CZ,{},{},{},,{},{},{},,,{},,,,,,,{},{},,,{},'.format(flight.url,
                                                        flight.date,
                                                        flight.locality,
                                                        flight.pilot,
@@ -157,7 +160,7 @@ def print_csv(flights):
                                                        flight.track_type,
                                                        flight.cps_points
                                                        )
-                                                      )
+                                                      , file=f)
 
 def main():
     year = "2023"
